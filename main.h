@@ -2,12 +2,20 @@
 #define MAIN_H
 
 #include <stdarg.h>
+<<<<<<< HEAD
 #include <stdlib.h>
 #include <unistd.h>
+=======
+#include <unistd.h>
+#include <stdlib.h>
+
+
+>>>>>>> ef510d66df43957f04220618ef6d27aa9014703f
 
 /**
  * struct print - struct for printer functions
  * puts - a function that print a char
+ * _printf - a function that prints alot of data types
  * @type_arg: identifier
  * @f: pointer to a printer functions
  * _printf - a function that printsdata types
@@ -26,3 +34,4 @@ int _printf(const char *format, ...);
 int print_chr(va_list arguments, char *buf, unsigned int ibuf);
 
 #endif
+
