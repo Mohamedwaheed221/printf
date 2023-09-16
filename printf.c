@@ -1,13 +1,13 @@
-#include "main.h"
 #include <stdio.h>
-#include <stdarg.h>
+#include "main.h"
 
 /**
- * _printf - function that print any argument
+ * _printf - function to print any argument
  * @format: pointer to a string
  * i: input
  * Return: i
  */
+
 int _printf(const char *format, ...)
 {
 	int i = 0;
@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			i += putchar ('%');
+			i += putchar('%');
 		}
 		format++;
 	}
