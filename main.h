@@ -2,10 +2,8 @@
 #define MAIN_H
 
 #include <stdarg.h>
-#include <unistd.h>
 #include <stdlib.h>
-
-
+#include <unistd.h>
 
 /**
  * struct print - struct for printer functions
@@ -13,11 +11,11 @@
  * _printf - a function that prints alot of data types
  * @type_arg: identifier
  * @f: pointer to a printer functions
+ * _printf - a function that printsdata types
  *
  * Description: struct that stores pointers to a
- * printer functions.
+ * printer function
  */
-
 typedef struct print
 {
 	char *type_arg;
