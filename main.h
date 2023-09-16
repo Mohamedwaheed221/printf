@@ -2,9 +2,14 @@
 #define MAIN_H
 
 #include <stdarg.h>
+<<<<<<< HEAD
 #include <unistd.h>
 #include <stdlib.h>
 
+=======
+#include <stdlib.h>
+#include <unistd.h>
+>>>>>>> 4062355999eb34edaf2850eff395f42d8e4f57f8
 
 /**
  * struct print - struct for printer functions
