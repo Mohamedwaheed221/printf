@@ -16,23 +16,8 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	while (*format != '\0')
+	while (*format)
 	{
-		if (*format == 'c')
+		if(*format == 'c')
 		{
-			i += putchar(va_arg(args, int));
-		}
-		else if (*format == 's')
-		{
-			i += puts(va_arg(args, char*));
-		}
-		else
-		{
-			i += putchar('%');
-		}
-		format++;
-	}
-	va_end(args);
-
-	return (i);
-}
+			i += printf("%c\n",va_arg(args, int));
