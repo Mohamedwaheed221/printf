@@ -5,6 +5,7 @@
  * Return: 0 (syccess)
  */
 
+
 int main(void)
 {
 	_printf("sc%", "Mohammed", 'A', '%');
