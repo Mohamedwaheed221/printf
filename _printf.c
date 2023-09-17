@@ -9,7 +9,9 @@ int _printf(const char *format, ...)
 {
 	int spacifier = 0;
 	va_list args;
+
 	va_start(args, format);
+
 	while (*format)
 	{
 		if (*format == '%')
@@ -18,11 +20,11 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				spacifier++;
-				printf("%c",va_arg(args, int));
+				printf("%c", va_arg(args, int));
 			}
 			else if (*format == 's')
 			{
-				spacifier += printf("%s",va_arg(args, char*));
+				spacifier += printf("%s", va_arg(args, char*));
 			}
 			else if (*format == '%')
 			{
