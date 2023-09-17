@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <limits.h>
-
+#include "main.h"
 int _printf(const char *format, ...)
 {
     int spac = 0;
