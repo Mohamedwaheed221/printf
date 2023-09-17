@@ -1,60 +1,30 @@
 #include "main.h"
-#include <stdarg.h>
 #include <stdio.h>
-int _printf(const char* str, ...)
+#include <stdarg.h>
+
+int _printf(const char *format, ...)
 {
-    va_list ptr;
-    va_start(ptr, str);
-    char token[1000];
-    int k = 0;
-    for (int i = 0; str[i] != '\0'; i++) {
-        token[k++] = str[i];
-  
-        if (str[i + 1] == '%' || str[i + 1] == '\0') {
-            token[k] = '\0';
-            k = 0;
-            if (token[0] != '%') {
-                fprintf(
-                    stdout, "%s",
-                    token);
-            }
-            else {
-                int j = 1;
-                char ch1 = 0;
-                while ((ch1 = token[j++]) < 58) {
-                }
-                if (ch1 == 'i' || ch1 == 'd' || ch1 == 'u'
-                    || ch1 == 'h') {
-                    fprintf(stdout, token,
-                            va_arg(ptr, int));
-                }
-                else if (ch1 == 'c') {
-                    fprintf(stdout, token,
-                            va_arg(ptr, int));
-                }
-                else if (ch1 == 'l') {
-                    char ch2 = token[2];
-                    if (ch2 == 'u' || ch2 == 'd'
-                        || ch2 == 'i') {
-                        fprintf(stdout, token,
-                                va_arg(ptr, long));
-                    }
-                    if (ch2 == 'u' || ch2 == 'd'
-                        || ch2 == 'i') {
-                        fprintf(stdout, token,
-                                va_arg(ptr, long long));
-                    }
-                }
-                else if (ch1 == 's') {
-                    fprintf(stdout, token,
-                            va_arg(ptr, char*));
-                }
-                else {
-                    fprintf(stdout, "%s", token);
-                }
-            }
+    int i = 0;
+    va_list args;
+    va_start (args, format);
+
+    while(*format != '\0')
+    {
+        if(*format == 'c')
+        {
+            i += putchar(va_arg(args, int));
         }
+        else if(*format == 's')
+        {
+            i += puts(va_arg(args, char*));
+        }
+        else
+        {
+            i += putchar('%');
+        }
+          format++;
     }
-    va_end(ptr);
-    return 0;
+    va_end (args);
+
+    return i;
 }
