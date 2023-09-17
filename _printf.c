@@ -2,39 +2,39 @@
 /**
  * _printf - function that print any argument
  * @format: pointer to a string
- * i: input
- * Return: i
+ * spacifier: input
+ * Return: spacifier
  */
 int _printf(const char *format, ...)
 {
-	int i = 0;
+	int spacifier = 0;
 	va_list args;
 	va_start(args, format);
-	while (*format){
-		if (*format == '%'){
+	while (*format)
+	{
+		if (*format == '%')
+		{
 			format++;
-			if (*format == 'c')
+			switch (*format)
 			{
-			i++;
-			putchar(va_arg(args, int));
+				case 'c':
+					spacifier += putchar(va_arg(args, int));
+					break;
+				case 's':
+					spacifier += puts(va_arg(args, char*));
+					break;
+				case '%':
+					spacifier += putchar('%');
+					break;
 			}
-			else if (*format == 's')
-			{
-				i += puts(va_arg(args, char*));
-			}
-			else if (*format == '%')
-			{
-				i++;
-				putchar('%');
-			}
+			format++;
 		}
 		else
 		{
-			i++;
-			putchar(*format);
+			format++;
+			spacifier += putchar(*format);
 		}
-		format++;
-	}
+		}
 	va_end(args);
-	return (i);
-}
+	return (spacifier);
+}		
