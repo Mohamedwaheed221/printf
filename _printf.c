@@ -1,46 +1,32 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <limits.h>
-#include "main.h"
+
 int _printf(const char *format, ...)
 {
-    int spac = 0;
-    va_list arg;
-    va_start (arg, format);
+    int i = 0;
+    va_list args;
+    va_start (args, format);
 
-    while(*format)
+    while(*format != '\0')
     {
-    	if(*format == '%')
+        if(*format == 'c')
         {
-        	format++;// to move after the %
-	  	if(*format == 'c')
-        	{
-			spac++;
-            		printf("%c\n",va_arg(arg, int));
-        	}
-        	else if(*format == 's')
-        	{
-            		spac += printf("%s\n", va_arg(arg, char*));
-        	}
-        	else if (*format == 'd')
-        	{
-            		spac += printf("%d", va_arg(arg, int));
-        	}
-        	else if(*format == "%")
-        	{
-            		spac++;
-			printf("%%");
-        	}
-        }else{
-		spac++;
-		putchar(*format);
-	}
-	format++; 
+            i += putchar(va_arg(args, int));
+        }
+        else if(*format == 's')
+        {
+            i += puts(va_arg(args, char*));
+        }
+        else
+        {
+            i += putchar('%');
+        }
+          format++;
     }
-    
-    va_end (arg);
+    va_end (args);
 
-    return spac;
+    return i;
 }
+
+
