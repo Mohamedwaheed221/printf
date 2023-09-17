@@ -9,7 +9,7 @@
 
 int main(void)
 {
-	_printf("sc%", "Mohammed", 'A', '%');
+	_printf("%s %c %%", "Mohammed", 'A', '%');
 	printf("\n");
 	return (0);
 }
