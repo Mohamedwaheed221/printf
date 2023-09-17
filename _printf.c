@@ -1,40 +1,44 @@
-#include "main.h"
-/**
- * _printf - function that prints any argument
- * @format: sting
- * spacifier: input
- * Return: spacifier
- */
+#include <stdio.h>
+#include <stdarg.h>
+#include <limits.h>
+
 int _printf(const char *format, ...)
 {
-	int spacifier = 0;
-	va_list args;
-	va_start(args, format);
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			switch (*format)
-			{
-				case 'c':
-					spacifier += putchar(va_arg(args, int));
-					break;
-				case 's':
-					spacifier += puts(va_arg(args, char*));
-					break;
-				case '%':
-					spacifier += putchar('%');
-					break;
-			}
-			format++;
-		}
-		else
-		{
-			spacifier += putchar(*format);
-			spacifier++;
-		}
+    int spac = 0;
+    va_list arg;
+    va_start (arg, format);
+
+    while(*format)
+    {
+    	if(*format == '%')
+        {
+        	format++;// to move after the %
+	  	if(*format == 'c')
+        	{
+			spac++;
+            		printf("%c\n",va_arg(arg, int));
+        	}
+        	else if(*format == 's')
+        	{
+            		spac += printf("%s\n", va_arg(arg, char*));
+        	}
+        	else if (*format == 'd')
+        	{
+            		spac += printf("%d", va_arg(arg, int));
+        	}
+        	else if(*format == "%")
+        	{
+            		spac++;
+			printf("%%");
+        	}
+        }else{
+		spac++;
+		putchar(*format);
 	}
-	va_end(args);
-	return (spacifier);
+	format++; 
+    }
+    
+    va_end (arg);
+
+    return spac;
 }
