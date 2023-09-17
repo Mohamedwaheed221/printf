@@ -5,13 +5,15 @@
  * i: int
  * len: length of string
  * str: array
+ * Return: len
  */
 int _printf(const char *format, ...)
 {
 	va_list args;
 	int i = 0;
 	int len = 0;
-	char str[1000];
+	char str[1000]0
+		;
 	va_start(args, format);
 	while (format[i] != '\0')
 	{

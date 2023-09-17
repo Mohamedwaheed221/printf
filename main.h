@@ -16,7 +16,7 @@
  */
 
 int _printf(const char *format, ...);
-int puts(const char*str);
+int puts(const char *str);
 
 
 #endif
