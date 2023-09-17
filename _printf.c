@@ -3,10 +3,12 @@
  * _printf - function that print any argument
  * @format: pointer to a string
  * spacifier: input
+<<<<<<< HEAD
  * Ruturn: spacifier
+=======
+>>>>>>> a89637a66a368f40eb906573107e15e0f5af48ca
  * Return: spacifier
  */
-
 int _printf(const char *format, ...)
 {
 	int spacifier = 0;
@@ -14,11 +16,12 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	while (*format)
 	{
-		if(*format == '%')
+		if (*format == '%')
 		{
 			format++;
-			switch (*format)
+			if (*format == 'c')
 			{
+<<<<<<< HEAD
 				case 'c':
 				spacifier += putchar(va_arg(args, int));
 				break;
@@ -43,13 +46,34 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			spacifier += putchar(*format);
+=======
+				spacifier++;
+				printf("%c", va_arg(args, int));
+			}
+			else if (*format == 's')
+			{
+				spacifier += printf("%s", va_arg(args, char*));
+			}
+			else if (*format == '%')
+			{
+				spacifier++;
+				putchar('%');
+			}
+		}else{
+			spacifier++;
+			putchar(*format);
+>>>>>>> a89637a66a368f40eb906573107e15e0f5af48ca
 		}
+		format++;
 	}
 	va_end(args);
 	return (spacifier);
 }
+<<<<<<< HEAD
 		}
 		}
 	va_end(args);
 	return (spacifier);
 }
+=======
+>>>>>>> a89637a66a368f40eb906573107e15e0f5af48ca
