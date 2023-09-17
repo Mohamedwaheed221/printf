@@ -9,36 +9,32 @@ int _printf(const char *format, ...)
 {
 	int spacifier = 0;
 	va_list args;
-
 	va_start(args, format);
-
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'c')
+			switch (*format)
 			{
-				spacifier++;
-				printf("%c", va_arg(args, int));
+				case 'c':
+					spacifier += putchar(va_arg(args, int));
+					break;
+				case 's':
+					spacifier += puts(va_arg(args, char*));
+					break;
+				case '%':
+					spacifier += putchar('%');
+					break;
 			}
-			else if (*format == 's')
-			{
-				spacifier += printf("%s", va_arg(args, char*));
-			}
-			else if (*format == '%')
-			{
-				spacifier++;
-				putchar('%');
-			}
+			format++;
 		}
-			else
-			{
-				spacifier++;
-				putchar(*format);
-			}
+		else
+		{
+			spacifier += putchar(*format);
 			spacifier++;
 		}
+	}
 	va_end(args);
 	return (spacifier);
 }
