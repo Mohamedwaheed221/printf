@@ -15,25 +15,25 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			switch (*format)
+			if (*format == 'c')
 			{
-				case 'c':
-					spacifier += putchar(va_arg(args, int));
-					break;
-				case 's':
-					spacifier += puts(va_arg(args, char*));
-					break;
-				case '%':
-					spacifier += putchar('%');
-					break;
+				spacifier++;
+				printf("%c", va_arg(args, int));
 			}
-			format++;
+			else if (*format == 's')
+			{
+				spacifier += printf("%s", va_arg(args, char*));
+			}
+			else if (*format == '%')
+			{
+				spacifier++;
+				putchar('%');
+			}
+		}else{
+			spacifier++;
+			putchar(*format);
 		}
-		else
-		{
-			spacifier += putchar(*format);
-			format++;
-		}
+		format++;
 	}
 	va_end(args);
 	return (spacifier);
