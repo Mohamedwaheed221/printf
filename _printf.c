@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _printf - function that print any argument
+ * _printf  - function that print any argument
  * @format: char
  * i: int
  * len: length of string
@@ -12,6 +12,7 @@ int _printf(const char *format, ...)
 	int i = 0;
 	int len = 0;
 	char str[1000];
+
 	va_start(args, format);
 	while (format[i] != '\0')
 	{
