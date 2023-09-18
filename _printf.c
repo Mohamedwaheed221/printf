@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	char str[1024];
 	va_list args;
 	va_start(args, format);
-	while (format[i])
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
@@ -32,14 +32,14 @@ int _printf(const char *format, ...)
 				case 'u':
 					str[len++] = printf("%u", va_arg(args, unsigned int));
 					break;
-				case 'r':
-					str[len++] = printf("%r", va_arg(args, int));
-					break;
 				case 'o':
 					str[len++] = printf("%o", va_arg(args, int));
 					break;
 				case'i':
 					str[len++] = printf("%i", va_arg(args, int));
+					break;
+				case'r':
+					str[len++] = printf("%d", va_arg(args, int));
 					break;
 				case'%':
 					str[len++] = putchar('%');
