@@ -8,6 +8,16 @@
  */
 int _printf(const char *format, ...)
 {
+	int x;
+	va_list argx;
+	va_start(argx, format);
+	x = vfprintf(stdout, format, argx);
+	va_end(argx);
+	return (x);
+}
+
+/*int _printf(const char *format, ...)
+{
 	int i = 0;
 	int len = 0;
 	char str[1024];
@@ -54,4 +64,4 @@ int _printf(const char *format, ...)
 	}
 	va_end(args);
 	return (len);
-}
+}*/
