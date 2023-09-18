@@ -1,6 +1,5 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
+
 /**
  * _printf  - function that print any argument
  * @format: char
@@ -16,23 +15,35 @@ int _printf(const char *format, ...)
 	char str[1024];
 	va_list args;
 	va_start(args, format);
-	while (format[i] != '\0')
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
 			switch (format[i])
 			{
-				case 'c':
-					str[len++] = putchar(va_arg(args, int));
+				case'c':
+					str[len++] = printf("%c", va_arg(args, int));
 					break;
-				case 's':
-					str[len++] = puts(va_arg(args, char*));
+				case's':
+					str[len++] = printf("%s", va_arg(args, char*));
 					break;
 				case'd':
-					str[len++] = putchar(va_arg(args, int));
+					str[len++] = printf("%d", va_arg(args, int));
 					break;
-				case '%':
+				case 'u':
+					str[len++] = printf("%u", va_arg(args, unsigned int));
+					break;
+				case 'r':
+					str[len++] = printf("%r", va_arg(args, int));
+					break;
+				case 'o':
+					str[len++] = printf("%o", va_arg(args, int));
+					break;
+				case'i':
+					str[len++] = printf("%i", va_arg(args, int));
+					break;
+				case'%':
 					str[len++] = putchar('%');
 					break;
 			}
