@@ -8,7 +8,9 @@
 #include <limits.h>
 #include <string.h>
 
-
+/**
+ * *
+ */
 int puts(const char *c);
 int _printf(const char *format, ...);
 #endif
