@@ -10,6 +10,7 @@
 
 /**
  * _printf - function that prints any argument
+ * puts: function that print a string
  */
 int puts(const char *c);
 int _printf(const char *format, ...);
