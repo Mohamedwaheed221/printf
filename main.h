@@ -9,7 +9,7 @@
 #include <string.h>
 
 /**
- * *
+ * _printf - function that prints any argument
  */
 int puts(const char *c);
 int _printf(const char *format, ...);
