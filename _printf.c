@@ -1,12 +1,10 @@
 #include "main.h"
-
 /**
  * _printf  - function that print any argument
  * @format: char
  * i: int
  * len: length of string
  * str: array
- * Return: len
  */
 int _printf(const char *format, ...)
 {
