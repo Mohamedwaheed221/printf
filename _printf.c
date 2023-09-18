@@ -2,9 +2,11 @@
 /**
  * _printf  - function that print any argument
  * @format: char
- * i: int
- * len: length of string
- * str: array
+ * x: int
+ * vfprintf - function that print argument
+ * argx: pointer for the list
+ * Description: function that return any argument
+ * Return: x
  */
 int _printf(const char *format, ...)
 {
@@ -19,7 +21,14 @@ int _printf(const char *format, ...)
 }
 
 /**
- * int _printf(const char *format, ...)
+* _printf - function that print any argument
+* i: input
+* @format: string
+* len: length of string
+* Str: string
+* Description: function which prints any argument
+* Return: len
+* int _printf(const char *format, ...)
 *{
 *	int i = 0;
 *	int len = 0;
