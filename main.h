@@ -11,7 +11,8 @@
 /**
  * _printf - function that prints any argument
  * puts: function that print a string
+ * @str: string
  */
-int puts(const char *c);
+int puts(const char *str);
 int _printf(const char *format, ...);
 #endif
